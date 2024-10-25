@@ -19,7 +19,7 @@ const AccountSettings = lazy(
   () => import("../pages/AccountPage/AccountSettings")
 );
 const DetailPage = lazy(() => import("../pages/DetailPage"));
-
+const Drop = lazy(() => import("../pages/Demo/Drop/Drop.tsx"));
 const routes = [
   {
     path: "/",
@@ -66,6 +66,28 @@ const routes = [
               {
                 path: "/account/settings",
                 title: "个人设置",
+                element: <AccountSettings />,
+              },
+            ],
+          },
+          {
+            path: "demo",
+            title: "demo",
+            icon: "",
+            children: [
+              {
+                path: "/demo/center",
+                title: "拖拽",
+                element: <Drop />,
+              },
+              {
+                path: "/demo/settings",
+                title: "虚拟列表",
+                element: <AccountSettings />,
+              },
+              {
+                path: "/demo/settings",
+                title: "图片加水印",
                 element: <AccountSettings />,
               },
             ],

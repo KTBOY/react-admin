@@ -52,7 +52,7 @@ const Login = () => {
       <LoginFormPage
         backgroundImageUrl="https://gw.alipayobjects.com/zos/rmsportal/FfdJeJRQWjEeGTpqgBKj.png"
         onFinish={onFinish as any}
-        title="react-template-admin"
+        title="舒克-react-template-admin"
         subTitle="一个轻量级react后台管理系统"
         activityConfig={{
           style: {
