@@ -66,6 +66,7 @@ const BasicLayout: React.FC = () => {
 
     if (item.item.props.external) {
       window.open(`${rootPath}/bigScreen/vwvh/open`, "_blank");
+      return;
     }
 
     navigate(item.key); //跳转
