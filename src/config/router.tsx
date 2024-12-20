@@ -20,6 +20,8 @@ const AccountSettings = lazy(
 );
 const DetailPage = lazy(() => import("../pages/DetailPage"));
 const Drop = lazy(() => import("../pages/Demo/Drop/Drop.tsx"));
+const Vwvh = lazy(() => import("../pages/BigScreen/Vwvh/Vwvh.tsx"));
+
 const routes = [
   {
     path: "/",
@@ -93,6 +95,19 @@ const routes = [
             ],
           },
           {
+            path: "bigScreen",
+            title: "大屏",
+            icon: "",
+            children: [
+              {
+                path: "/bigScreen/vwvh",
+                title: "vwvh方案",
+                // element: <Vwvh />,
+                external: true, //外部打开
+              },
+            ],
+          },
+          {
             path: "*",
             element: <Navigate to="/" replace={true} />,
           },
@@ -104,8 +119,13 @@ const routes = [
     path: "/login",
     element: <LoginPage />,
   },
+  {
+    path: "/bigScreen/vwvh/open",
+    title: "vwvh方案",
+    element: <Vwvh />,
+    external: true, //外部打开
+  },
 ];
 
 export { routes };
-
 export default createBrowserRouter(routes);

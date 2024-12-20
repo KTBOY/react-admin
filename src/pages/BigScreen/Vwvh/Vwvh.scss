@@ -1,0 +1,19 @@
+@import "@pages/BigScreen/style/utils.scss";
+
+.bigScreenVh-Vwvh {
+  background-color: #001d56;
+  height: 100%;
+  width: 100%;
+  padding: 0px vw(10);
+  .screen-container {
+    .body-content {
+      display: flex;
+      justify-content: space-evenly;
+    }
+    .passenger-traffic {
+      //   .px2vh(margin-top, 10);
+      //   .px2vw(padding-left, 16);
+      //   .px2vw(padding-right, 16);
+    }
+  }
+}

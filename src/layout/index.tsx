@@ -43,6 +43,7 @@ const BasicLayout: React.FC = () => {
         icon: item.icon,
         label: item.title,
         children: item.children ? getItems(item.children) : null,
+        external: item.external,
       };
     });
   };
@@ -51,10 +52,24 @@ const BasicLayout: React.FC = () => {
     routes[0].children![0].children.filter((item) => item.path !== "*")
   );
 
-  const onMenuClick: MenuProps["onClick"] = ({ key }) => {
-    navigate(key);
-  };
+  // 点击菜单item
+  const onMenuClick: MenuProps["onClick"] = (item) => {
+    console.log(item.item.props.external, menuItems);
+    // 获取绝对路径
+    const hrefStr = window.location.href;
+    // 获取相对路径
+    const urlParams = new URL(hrefStr);
+    const pathname = urlParams?.pathname;
+    // 获取根路径
+    const rootPath = hrefStr.replace(pathname, "");
+    // 在新标签页面打开绝对路径
 
+    if (item.item.props.external) {
+      window.open(`${rootPath}/bigScreen/vwvh/open`, "_blank");
+    }
+
+    navigate(item.key); //跳转
+  };
   if (!userInfo) {
     return <Navigate to="/login" replace={true} />;
   }

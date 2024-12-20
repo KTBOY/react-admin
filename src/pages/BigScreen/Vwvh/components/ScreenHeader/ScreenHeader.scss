@@ -1,0 +1,76 @@
+@import "../../../style/utils.scss";
+
+.BigScreen-Vwvh-ScreenHeader {
+  height: vh(148);
+  .screen-header {
+    //   background-image: url('../../images/entranceGuard/dp_title_img.png');
+    background-image: url("@assets/images/entranceGuard/dp_title_img.png");
+    background-size: 100% 100%;
+    width: 100%;
+    height: vh(148);
+    .screen-header-top-section {
+      height: vh(90);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: vh(0) vw(20);
+      .left {
+        width: 33.33%;
+        height: 100%;
+        font-size: vh(24);
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        padding: vh(0) vw(10);
+        color: #ffffff;
+        .day {
+          color: #5cf3ff;
+        }
+        &-image {
+          width: vw(32);
+          height: vh(32);
+          margin:vh(6) vw(5);
+        }
+      }
+      .center {
+        width: 33.33%;
+        text-align: center;
+        font-size: vh(52);
+        //  .px2font(52);
+        font-weight: bold;
+        // background: linear-gradient(180deg, #ffffff 0%, #fafdff 33%, #9cd6ff 60%, #87cdff 100%);
+        // background: linear-gradient(to bottom, #ffffff, #000000);
+        // color: transparent;
+        background-image: linear-gradient(
+          to bottom,
+          #ffffff 0%,
+          #fafdff 33%,
+          #9cd6ff 60%,
+          #87cdff 100%
+        );
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+      }
+    }
+  }
+  .right {
+    width: 33.33%;
+    font-size: vh(24);
+    font-weight: 500;
+    text-align: center;
+    color: #ffffff;
+    text-shadow: 0 0 3px #53a9ff, 0 0 3px #53a9ff, 0 0 3px #53a9ff,
+      0 0 3px #53a9ff; //设置发光效果
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    height: 100%;
+    padding: vh(10) vw(10);
+    // padding: 10px;
+    // .px2vw(padding-left,10);
+    // .px2vw(padding-right,10);
+    // .px2vh(padding-top, 10);
+    // .px2vh(padding-bottom, 10);
+    // .px2vh(margin-bottom,10);
+  }
+}
