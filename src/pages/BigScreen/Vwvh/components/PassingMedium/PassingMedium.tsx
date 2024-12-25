@@ -1,0 +1,187 @@
+import React, { useEffect, useRef, useState } from "react";
+import "./PassingMedium.scss";
+import * as echarts from "echarts";
+import {
+  imageList,
+  trafficWay,
+  echartsColor,
+} from "@pages/BigScreen/Vwvh/data/Vwnh.data";
+import { fitChartSize } from "@pages/BigScreen/utils/dataUtils";
+import LengendItem from "./LengendItem/LengendItem";
+
+const data = [];
+const getMockData = () => {
+  for (let i = 0; i < trafficWay.length; i++) {
+    data.push(
+      {
+        value: trafficWay[i].value,
+        name: trafficWay[i].name,
+        itemStyle: {
+          normal: {
+            borderWidth: 5,
+            shadowBlur: 20,
+            borderColor: echartsColor[i],
+            shadowColor: echartsColor[i],
+          },
+        },
+      },
+      {
+        value: 2,
+        name: "",
+        itemStyle: {
+          normal: {
+            label: {
+              show: false,
+            },
+            labelLine: {
+              show: false,
+            },
+            color: "rgba(0, 0, 0, 0)",
+            borderColor: "rgba(0, 0, 0, 0)",
+            borderWidth: 0,
+          },
+        },
+      }
+    );
+  }
+};
+
+const PassingMedium: React.FC = () => {
+  const main2 = useRef(null);
+  let chartInstance = null;
+
+  const renderChart = () => {
+    const myChart = echarts.getInstanceByDom(
+      main2.current as unknown as HTMLDivElement
+    );
+    if (myChart) chartInstance = myChart;
+    else
+      chartInstance = echarts.init(main2.current as unknown as HTMLDivElement);
+
+    chartInstance.setOption({
+      color: echartsColor,
+      title: {
+        text: "交通方式",
+        top: "48%",
+        textAlign: "center",
+        left: "49%",
+        textStyle: {
+          color: "#fff",
+          fontSize: fitChartSize(23),
+          fontWeight: "400",
+        },
+      },
+      graphic: {
+        elements: [
+          {
+            type: "image",
+            z: 3,
+            style: {
+              image: imageList.chartBg,
+              width: 98,
+              height: 98,
+            },
+            left: "center",
+            top: "center",
+            position: [100, 100],
+          },
+        ],
+      },
+      tooltip: {
+        show: false,
+      },
+      legend: {
+        data: ["火车", "飞机", "客车"],
+        type: "scroll",
+        orient: "vertical",
+        right: "10%",
+        left: "left",
+        top: "35%",
+        icon: "rect",
+        itemWidth: fitChartSize(25),
+        itemGap: -10,
+        // backgroundColor: {
+        //     image: mxbg,
+
+        //   },
+        // backgroundImage: mxbg,
+        //className: "custom-legend",
+        formatter: (name) => {
+          let target;
+          for (let i = 0; i < trafficWay.length; i++) {
+            if (trafficWay[i].name === name) {
+              target = trafficWay[i].value;
+            }
+          }
+
+          if (name) {
+            let p = ((target / 100) * 100).toFixed(2);
+            const arr = [`{a|${name}}`, `{b|${p === "NaN" ? "0" : p}%}`];
+            return arr.join("");
+          }
+        },
+        textStyle: {
+          // 添加
+          padding: [1, 0, 0, 0],
+          rich: {
+            a: {
+              fontSize: fitChartSize(20),
+              width: fitChartSize(120),
+              height: 35,
+              lineHeight: 35,
+              color: "#ffffff",
+              padding: [0, 10, 0, 20],
+            },
+
+            b: {
+              fontSize: fitChartSize(20),
+              color: "#ffffff",
+            },
+          },
+        },
+      },
+      toolbox: {
+        show: false,
+      },
+      series: [
+        {
+          name: "",
+          type: "pie",
+          clockWise: false,
+          radius: [65, 69],
+          hoverAnimation: false,
+          data,
+        },
+      ],
+    });
+  };
+  useEffect(() => {
+    getMockData();
+    renderChart();
+    // 监听
+    window.addEventListener("resize", () => {
+      chartInstance.resize();
+    });
+    // 销毁
+    // return () => window.removeEventListener("resize", renderChart);
+  });
+  return (
+    <div className="page-passing-medium">
+      <div className="today-population">
+        <div className="title">
+          <span>今日通行介质统计</span>
+        </div>
+        <div className="chart-box">
+          <div ref={main2} className="chart">
+            {" "}
+          </div>
+
+          <div className="legend">
+            <LengendItem />
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+};
+export default PassingMedium;

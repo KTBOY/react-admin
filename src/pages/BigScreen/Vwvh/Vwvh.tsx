@@ -9,7 +9,7 @@
 import React, { useRef } from "react";
 import ScreenHeader from "./components/ScreenHeader/ScreenHeader";
 import TodayPopulation from "./components/TodayPopulation/TodayPopulation";
-
+import PassingMedium from "./components/PassingMedium/PassingMedium";
 import "./Vwvh.scss";
 
 const bigScreenVh: React.FC<any> = (props) => {
@@ -19,7 +19,11 @@ const bigScreenVh: React.FC<any> = (props) => {
         <div className="screen-content" id="screen">
           <ScreenHeader />
 
-          <TodayPopulation />
+          <div>
+            <TodayPopulation />
+
+            <PassingMedium />
+          </div>
         </div>
       </div>
     </div>

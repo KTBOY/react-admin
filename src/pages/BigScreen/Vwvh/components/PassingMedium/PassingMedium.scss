@@ -1,0 +1,56 @@
+@import "../../../style/utils.scss";
+
+.page-passing-medium {
+  .today-population {
+    width: 100%;
+    height: vh(300);
+    background-image: url("@assets/images/entranceGuard/mjxt_txrs_bg_img.png");
+    background-size: 100% 100%;
+    margin-top: vh(9);
+    position: relative;
+  }
+  .chart-box {
+    height: 100%;
+    padding-top: vh(20);
+    padding-left: vw(15);
+    padding-right: vw(20);
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    .chart{
+      height:calc(100% - 10px);
+    }
+  }
+  .title {
+    width: vw(208);
+    height: vh(40);
+    line-height: vh(40);
+    font-size: vw(20);
+    text-align: center;
+    background-image: url("@assets/images/entranceGuard/mjxt_title_bg_img@2x.png");
+    background-size: 100% 100%;
+    color: #fff;
+    font-weight: bold;
+    position: absolute;
+    left: 0;
+    top: 0;
+  }
+  .tip-list {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .chart {
+    // .px2vw(width, 1160);
+    // .px2vh(height, 411);
+    width: 43%;
+  }
+
+  .legend {
+    width: 58%;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+  }
+}

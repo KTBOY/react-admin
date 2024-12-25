@@ -1,0 +1,53 @@
+@import "../../../../style/utils.scss";
+.lengend-item{
+    display: flex;
+
+    flex-direction: column;
+    .header-title {
+        display: flex;
+        align-items: center;
+        font-size: vw(16);
+        font-weight: 500;
+        color: #fff;
+        margin-bottom: vh(8);
+        .tip {
+            width:vw(16);
+            height:vh(16);
+            background: #0f3f77;
+            border-radius: vw(4);
+            display: flex;
+            align-items: center;
+            .tip2 {
+                width:vw(8);
+                height:vh(8);
+                border-radius: vw(2);
+                background: #5cf3ff;
+            }     
+        }
+        .name {
+            margin-left: vw(5);
+          }
+    }
+    .header-content {
+
+        width:vw(200);
+        height:vh(140);
+        line-height:vh(140);
+        color: #fff;
+        background-image: url('@assets/images/entranceGuard/mjxt_smtx_bg_img.png');
+        background-size: 100% 100%;
+        text-align: center;
+    
+        .count {
+          font-size: vw(40);
+          font-family: 'YouSheBiaoTiHei';
+          font-weight: 400;
+          text-align: center;
+          color: #ffffff;
+          letter-spacing: 16px;
+          text-shadow: 0px 2px 4px #5cf3ff;
+
+        }
+      }
+    
+}

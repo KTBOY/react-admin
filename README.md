@@ -31,6 +31,8 @@
 # 目录结构
 
 ```bash
+├─ build                      # 打包配置
+│   ├─
 ├─ public                     # 静态资源
 │   ├─ favicon.ico            # favicon图标
 ├─ src                        # 项目源代码

@@ -65,12 +65,13 @@ const BasicLayout: React.FC = () => {
     // 在新标签页面打开绝对路径
 
     if (item.item.props.external) {
-      window.open(`${rootPath}/bigScreen/vwvh/open`, "_blank");
+      window.open(`${window.location.href}bigScreen/vwvh/open`, "_blank");
       return;
     }
 
     navigate(item.key); //跳转
   };
+
   if (!userInfo) {
     return <Navigate to="/login" replace={true} />;
   }
