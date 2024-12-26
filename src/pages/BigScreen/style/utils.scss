@@ -1,6 +1,13 @@
 // 使用 scss 的 math 函数，https://sass-lang.com/documentation/breaking-changes/slash-div
 @use "sass:math";
 
+@font-face {
+  font-family: 'YouSheBiaoTiHei';
+  src: url('@assets/images/entranceGuard/YouSheBiaoTiHei.ttf');
+  font-weight: normal;
+  font-style: normal;
+}
+
 // 默认设计稿的宽度
 $designWidth: 1920;
 // 默认设计稿的高度

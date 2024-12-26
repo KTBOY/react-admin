@@ -48,7 +48,7 @@ const getMockData = () => {
 
 const PassingMedium: React.FC = () => {
   const main2 = useRef(null);
-  let chartInstance = null;
+  let chartInstance: echarts.ECharts | null = null;
 
   const renderChart = () => {
     const myChart = echarts.getInstanceByDom(
@@ -62,12 +62,12 @@ const PassingMedium: React.FC = () => {
       color: echartsColor,
       title: {
         text: "交通方式",
-        top: "48%",
+        top: "46%",
         textAlign: "center",
-        left: "49%",
+        left: "49.5%",
         textStyle: {
           color: "#fff",
-          fontSize: fitChartSize(23),
+          fontSize: fitChartSize(15),
           fontWeight: "400",
         },
       },
@@ -160,10 +160,18 @@ const PassingMedium: React.FC = () => {
     renderChart();
     // 监听
     window.addEventListener("resize", () => {
-      chartInstance.resize();
+      // renderChart();
+      console.log("resize", chartInstance.resize);
     });
     // 销毁
     // return () => window.removeEventListener("resize", renderChart);
+  });
+  window.addEventListener("resize", () => {
+    // bug: chartInstance.resize() is not a function   无法调用resize方法
+    //if (chartInstance) chartInstance.resize();
+
+    renderChart();
+    console.log("resize", chartInstance.resize());
   });
   return (
     <div className="page-passing-medium">
@@ -172,9 +180,7 @@ const PassingMedium: React.FC = () => {
           <span>今日通行介质统计</span>
         </div>
         <div className="chart-box">
-          <div ref={main2} className="chart">
-            {" "}
-          </div>
+          <div ref={main2} className="chart"></div>
 
           <div className="legend">
             <LengendItem />

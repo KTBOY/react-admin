@@ -1,7 +1,7 @@
 /*
  * @Author: zlc
  * @Date: 2024-12-05 19:32:56
- * @LastEditTime: 2024-12-17 19:34:07
+ * @LastEditTime: 2024-12-26 19:26:30
  * @LastEditors: zlc
  * @Description:
  * @FilePath: \react-template-admin\src\pages\BigScreen\Vwvh\components\TodayPopulation\TodayPopulation.tsx
@@ -214,9 +214,6 @@ const TodayPopulation: React.FC = () => {
       ],
     });
   };
-  useEffect(() => {
-    //initChart();
-  });
 
   useEffect(() => {
     renderChart();
