@@ -1,0 +1,17 @@
+@import "../../../style/utils.scss";
+
+
+
+.accessList{
+    position: relative;
+    width: 100%;
+    height:vh(611);
+    background-image: url('@assets/images/entranceGuard/mjxt_txrs_bg_img.png');
+    background-size: 100% 100%;
+    .marquee{
+        padding-top: 50px;
+        padding-left:15px;
+        height: calc(100% - 20px);
+        overflow: hidden;
+    }
+}

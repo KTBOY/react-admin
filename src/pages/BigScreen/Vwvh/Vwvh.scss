@@ -10,6 +10,18 @@
       display: flex;
       justify-content: space-evenly;
     }
+    .model-one{
+      display: flex;
+      justify-content: space-between;
+      .one-left{
+        width:75%;
+        overflow: hidden;
+      }
+      .one-right{
+        width:24.5%;
+        overflow:hidden;
+      }
+    }
     .passenger-traffic {
       //   .px2vh(margin-top, 10);
       //   .px2vw(padding-left, 16);

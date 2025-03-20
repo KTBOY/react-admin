@@ -1,4 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
+
+import styled from "styled-components";
 import "./PassingMedium.scss";
 import * as echarts from "echarts";
 import {
@@ -45,7 +47,15 @@ const getMockData = () => {
     );
   }
 };
-
+const ChartHeight = React.forwardRef<
+  HTMLDivElement,
+  React.HTMLProps<HTMLDivElement>
+>((props, ref) => <div ref={ref} {...props} />);
+ChartHeight.displayName = "ChartHeight";
+const ChartHeightStyle = styled(ChartHeight)`
+  width: 100%;
+  height: 100%;
+`;
 const PassingMedium: React.FC = () => {
   const main2 = useRef(null);
   let chartInstance: echarts.ECharts | null = null;
@@ -57,36 +67,62 @@ const PassingMedium: React.FC = () => {
     if (myChart) chartInstance = myChart;
     else
       chartInstance = echarts.init(main2.current as unknown as HTMLDivElement);
+    const eChartsOptions = {
+      center: ["79%", "50%", "50%", "50%"],
+      animation: false,
+      series: {
+        hover: {
+          hoverAnimation: false,
+          label: {
+            normal: {
+              show: false,
+            },
+            emphasis: {
+              show: false,
+            },
+          },
+          emphasis: {
+            itemStyle: {
+              show: false,
+            },
+          },
 
-    chartInstance.setOption({
-      color: echartsColor,
-      title: {
-        text: "交通方式",
-        top: "46%",
-        textAlign: "center",
-        left: "49.5%",
-        textStyle: {
-          color: "#fff",
-          fontSize: fitChartSize(15),
-          fontWeight: "400",
+          animation: false,
+          tooltip: {
+            show: false,
+          },
         },
       },
-      graphic: {
-        elements: [
-          {
-            type: "image",
-            z: 3,
-            style: {
-              image: imageList.chartBg,
-              width: 98,
-              height: 98,
-            },
-            left: "center",
-            top: "center",
-            position: [100, 100],
-          },
-        ],
-      },
+    };
+    chartInstance.setOption({
+      color: echartsColor,
+      // title: {
+      //   text: "交通方式",
+      //   top: "46%",
+      //   textAlign: "center",
+      //   left: "49.5%",
+      //   textStyle: {
+      //     color: "#fff",
+      //     fontSize: fitChartSize(15),
+      //     fontWeight: "400",
+      //   },
+      // },
+      // graphic: {
+      //   left:'60%',
+      //   elements: [
+      //     {
+      //       type: "image",
+      //       z: 3,
+      //       style: {
+      //         image: imageList.chartBg,
+      //         width: fitChartSize(105),
+      //         height: fitChartSize(105),
+      //       },
+      //       center: eChartsOptions.center,
+      //       position: [100, 100],
+      //     },
+      //   ],
+      // },
       tooltip: {
         show: false,
       },
@@ -148,9 +184,10 @@ const PassingMedium: React.FC = () => {
           name: "",
           type: "pie",
           clockWise: false,
-          radius: [65, 69],
+          radius: ["60%", "68%"],
           hoverAnimation: false,
           data,
+          center: eChartsOptions.center,
         },
       ],
     });
@@ -180,8 +217,10 @@ const PassingMedium: React.FC = () => {
           <span>今日通行介质统计</span>
         </div>
         <div className="chart-box">
-          <div ref={main2} className="chart"></div>
-
+          {/* <div ref={main2} className="chart"></div> */}
+          <ChartHeightStyle ref={main2}>
+            {/* <div style={{ height: 400 }} ref={main2} /> */}
+          </ChartHeightStyle>
           <div className="legend">
             <LengendItem />
           </div>
